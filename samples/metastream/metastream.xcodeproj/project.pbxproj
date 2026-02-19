@@ -10,6 +10,8 @@
 		2E00000012345678AABBCC11 /* LowLatencyEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E00000012345678AABBCC03 /* LowLatencyEncoder.swift */; };
 		2E00000012345678AABBCCDD /* PacketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E00000012345678AABBCC01 /* PacketTypes.swift */; };
 		2E00000012345678AABBCCEE /* StreamBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E00000012345678AABBCC02 /* StreamBroadcaster.swift */; };
+		2E00000012345678AABBCCFF /* NDIBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E00000012345678AABBCC05 /* NDIBroadcaster.swift */; };
+		2E00000012345678AABBCD00 /* libndi_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E00000012345678AABBCC06 /* libndi_ios.a */; };
 		8F2D23802E856711002D0588 /* DebugMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D237F2E856711002D0588 /* DebugMenuViewModel.swift */; };
 		8F8F00782E8ACB4600A4BDAF /* WearablesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8F00772E8ACB4500A4BDAF /* WearablesViewModel.swift */; };
 		8FD96B7F2E6F0A9800F56AB1 /* metastream-app.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD96B792E6F0A9800F56AB1 /* metastream-app.swift */; };
@@ -81,6 +83,9 @@
 		2E00000012345678AABBCC02 /* StreamBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamBroadcaster.swift; sourceTree = "<group>"; };
 		2E00000012345678AABBCC03 /* LowLatencyEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowLatencyEncoder.swift; sourceTree = "<group>"; };
 		2E00000012345678AABBCC04 /* LowLatencyDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowLatencyDecoder.swift; sourceTree = "<group>"; };
+		2E00000012345678AABBCC05 /* NDIBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDIBroadcaster.swift; sourceTree = "<group>"; };
+		2E00000012345678AABBCC06 /* libndi_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libndi_ios.a; path = "/Library/NDI SDK for Apple/lib/iOS/libndi_ios.a"; sourceTree = "<absolute>"; };
+		2E00000012345678AABBCC07 /* metastream-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "metastream-Bridging-Header.h"; sourceTree = "<group>"; };
 		2E691CC22F04995900A8F1FD /* metaStreamMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = metaStreamMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E691CD02F04995A00A8F1FD /* metaStreamMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = metaStreamMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E691CDA2F04995A00A8F1FD /* metaStreamMacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = metaStreamMacUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +155,7 @@
 				8FD96B952E6F0F7D00F56AB1 /* MWDATCore in Frameworks */,
 				8FD96B952E6F0F7D00F56AB2 /* MWDATCamera in Frameworks */,
 				8FD96B952E6F0F7D00F56AB3 /* MWDATMockDevice in Frameworks */,
+				2E00000012345678AABBCD00 /* libndi_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +173,7 @@
 		2E00000012345678AABBCCAB /* metastreamRelay */ = {
 			isa = PBXGroup;
 			children = (
+				2E00000012345678AABBCC05 /* NDIBroadcaster.swift */,
 				2E00000012345678AABBCC01 /* PacketTypes.swift */,
 				2E00000012345678AABBCC02 /* StreamBroadcaster.swift */,
 				2E00000012345678AABBCCAC /* Video */,
@@ -212,6 +219,7 @@
 		8F2A14F12DDBCEB900D4E5F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E00000012345678AABBCC06 /* libndi_ios.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,6 +262,7 @@
 				8FD96B782E6F0A9800F56AB1 /* metastream.entitlements */,
 				8FD96B792E6F0A9800F56AB1 /* metastream-app.swift */,
 				8FD96B7B2E6F0A9800F56AB1 /* Info.plist */,
+				2E00000012345678AABBCC07 /* metastream-Bridging-Header.h */,
 			);
 			path = "metastream-ios";
 			sourceTree = "<group>";
@@ -531,6 +540,7 @@
 				2E00000012345678AABBCCDD /* PacketTypes.swift in Sources */,
 				2E00000012345678AABBCCEE /* StreamBroadcaster.swift in Sources */,
 				2E00000012345678AABBCC11 /* LowLatencyEncoder.swift in Sources */,
+				2E00000012345678AABBCCFF /* NDIBroadcaster.swift in Sources */,
 				8FD96B7F2E6F0A9800F56AB1 /* metastream-app.swift in Sources */,
 				8FD96B812E6F0A9800F56AB1 /* HomeScreenView.swift in Sources */,
 				8F2D23802E856711002D0588 /* DebugMenuViewModel.swift in Sources */,
@@ -596,16 +606,25 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZY2Q789JTM;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "\"$(inherited)\" \"/Library/NDI SDK for Apple/include\"";
 				INFOPLIST_FILE = "metastream-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"/Library/NDI SDK for Apple/lib/iOS\"",
+				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.demo.metastream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -613,6 +632,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "metastream-ios/metastream-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -629,15 +649,24 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZY2Q789JTM;
 				ENABLE_PREVIEWS = YES;
+				HEADER_SEARCH_PATHS = "\"$(inherited)\" \"/Library/NDI SDK for Apple/include\"";
 				INFOPLIST_FILE = "metastream-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"/Library/NDI SDK for Apple/lib/iOS\"",
+				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.demo.metastream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -645,6 +674,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "metastream-ios/metastream-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -659,6 +689,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -677,7 +708,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.metastream-mac;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.demo.metastream-mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
@@ -700,6 +731,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -718,7 +750,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.metastream-mac;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.demo.metastream-mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
@@ -738,6 +770,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -745,7 +778,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.metastream-mac-tests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.demo.metastream-mac-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -765,6 +798,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -772,7 +806,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.metastream-mac-tests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.demo.metastream-mac-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -790,6 +824,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -797,7 +832,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.metastream-mac-uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.demo.metastream-mac-uitests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -816,6 +851,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -823,7 +859,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.metastream-mac-uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.demo.metastream-mac-uitests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -849,7 +885,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.metastream-tests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.demo.metastream-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -878,7 +914,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.metastream-tests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.demo.metastream-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

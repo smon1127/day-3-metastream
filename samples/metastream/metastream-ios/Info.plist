@@ -47,19 +47,22 @@
 		<key>AppLinkURLScheme</key>
 		<string>metastream://</string>
 		<key>ClientToken</key>
-		<string>$(CLIENT_TOKEN)</string>
+		<string>YOUR_CLIENT_TOKEN</string>
 		<key>MetaAppID</key>
-		<string>0</string>
+		<string>YOUR_META_APP_ID</string>
 		<key>TeamID</key>
 		<string>$(DEVELOPMENT_TEAM)</string>
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Needed to connect to Meta AI Glasses</string>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>metastream uses local network to stream video to Mac companion app.</string>
+	<string>metastream uses local network to stream video to Mac companion app and broadcast via NDI.</string>
+	<string>metastream uses local network to stream video to Mac companion app and broadcast via NDI.</string>
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_metastream._udp</string>
+		<string>_ndi._tcp</string>
+		<string>_ndi._tcp</string>
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to save photos captured from your glasses.</string>

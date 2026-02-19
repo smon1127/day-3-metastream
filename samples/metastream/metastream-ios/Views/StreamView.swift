@@ -45,8 +45,8 @@ struct StreamView: View {
           .foregroundColor(.white)
       }
 
-      // Relay status indicator (top)
-      VStack {
+      // Status indicators (top)
+      VStack(spacing: 6) {
         if viewModel.relayEnabled {
           HStack(spacing: 8) {
             Circle()
@@ -60,10 +60,24 @@ struct StreamView: View {
           .padding(.vertical, 6)
           .background(Color.black.opacity(0.6))
           .cornerRadius(16)
-          .padding(.top, 50)
+        }
+        if viewModel.ndiEnabled {
+          HStack(spacing: 8) {
+            Circle()
+              .fill(Color.green)
+              .frame(width: 8, height: 8)
+            Text("NDI Live")
+              .font(.system(size: 13, weight: .medium))
+              .foregroundColor(.white)
+          }
+          .padding(.horizontal, 12)
+          .padding(.vertical, 6)
+          .background(Color.red.opacity(0.8))
+          .cornerRadius(16)
         }
         Spacer()
       }
+      .padding(.top, 50)
 
       // Bottom controls layer
       VStack {
@@ -121,20 +135,53 @@ struct RelayMessagesSheet: View {
     NavigationView {
       VStack(spacing: 0) {
         // Status banner
-        HStack(spacing: 8) {
-          Circle()
-            .fill(viewModel.relayConnected ? Color.green : Color.orange)
-            .frame(width: 10, height: 10)
-          Text(viewModel.relayStatus)
-            .font(.system(size: 14))
-          Spacer()
-          Toggle("", isOn: Binding(
-            get: { viewModel.relayEnabled },
-            set: { _ in viewModel.toggleRelay() }
-          ))
-          .labelsHidden()
+        VStack(spacing: 0) {
+          HStack(spacing: 8) {
+            Circle()
+              .fill(viewModel.relayConnected ? Color.green : Color.orange)
+              .frame(width: 10, height: 10)
+            Text(viewModel.relayStatus)
+              .font(.system(size: 14))
+            Spacer()
+            Toggle("", isOn: Binding(
+              get: { viewModel.relayEnabled },
+              set: { _ in viewModel.toggleRelay() }
+            ))
+            .labelsHidden()
+          }
+          .padding()
+
+          Divider()
+
+          HStack(spacing: 8) {
+            Circle()
+              .fill(viewModel.ndiEnabled ? Color.green : Color.gray)
+              .frame(width: 10, height: 10)
+            Text("Broadcast via NDI")
+              .font(.system(size: 14))
+            Spacer()
+            Toggle("", isOn: Binding(
+              get: { viewModel.ndiEnabled },
+              set: { _ in viewModel.toggleNDI() }
+            ))
+            .labelsHidden()
+          }
+          .padding()
+
+          if viewModel.ndiEnabled {
+            HStack {
+              Text(viewModel.ndiStatus)
+                .font(.system(size: 12))
+                .foregroundColor(.secondary)
+              Spacer()
+              Text(String(format: "%.1f fps", viewModel.ndiBroadcaster.currentFPS))
+                .font(.system(size: 12, design: .monospaced))
+                .foregroundColor(.secondary)
+            }
+            .padding(.horizontal)
+            .padding(.bottom, 8)
+          }
         }
-        .padding()
         .background(Color(.systemGray6))
 
         // Messages list

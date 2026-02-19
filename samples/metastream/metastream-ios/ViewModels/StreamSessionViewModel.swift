@@ -56,6 +56,11 @@ class StreamSessionViewModel: ObservableObject {
   @Published var relayMessages: [MetadataMessage] = []
   let broadcaster = StreamBroadcaster()
 
+  // NDI broadcast properties
+  @Published var ndiEnabled: Bool = false
+  @Published var ndiStatus: String = "NDI off"
+  let ndiBroadcaster = NDIBroadcaster()
+
   // Recording properties
   @Published var isRecording: Bool = false
   @Published var recordingDuration: TimeInterval = 0
@@ -184,6 +189,11 @@ class StreamSessionViewModel: ObservableObject {
           print("[StreamSession] ⚠️ Relay not connected - frames will only display locally")
         }
 
+        // Send to NDI if enabled
+        if self.ndiBroadcaster.isEnabled {
+          self.ndiBroadcaster.sendVideoFrame(safeSampleBuffer)
+        }
+
         // Write to recording if active
         if self.isRecording {
           self.writeFrameToRecording(safeSampleBuffer)
@@ -274,6 +284,25 @@ class StreamSessionViewModel: ObservableObject {
         }
       }
     )
+
+    // NDI observers
+    relayObservers.append(
+      ndiBroadcaster.$isEnabled.sink { [weak self] enabled in
+        Task { @MainActor [weak self] in
+          guard let self else { return }
+          self.ndiEnabled = enabled
+        }
+      }
+    )
+
+    relayObservers.append(
+      ndiBroadcaster.$statusMessage.sink { [weak self] status in
+        Task { @MainActor [weak self] in
+          guard let self else { return }
+          self.ndiStatus = status
+        }
+      }
+    )
   }
 
   // MARK: - Relay Methods
@@ -283,6 +312,14 @@ class StreamSessionViewModel: ObservableObject {
       broadcaster.stopAdvertising()
     } else {
       broadcaster.startAdvertising()
+    }
+  }
+
+  func toggleNDI() {
+    if ndiEnabled {
+      ndiBroadcaster.stop()
+    } else {
+      ndiBroadcaster.start()
     }
   }
 
@@ -518,6 +555,11 @@ class StreamSessionViewModel: ObservableObject {
       if broadcaster.isStreaming {
         print("[StreamSession] Stream stopped, stopping video relay")
         broadcaster.stopVideoStream()
+      }
+      // Stop NDI when stream stops
+      if ndiBroadcaster.isEnabled {
+        print("[StreamSession] Stream stopped, stopping NDI broadcast")
+        ndiBroadcaster.stop()
       }
       // Reset frame dimensions and count
       lastFrameWidth = 0
